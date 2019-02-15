@@ -24,6 +24,9 @@ class User extends CI_Model{
 		$this->load->database();
 	}
 
+	public function get_access_level(){
+		return $this->access_level;
+	}
 	public function get_email(){
 		return $this->email;
 	}
@@ -77,13 +80,28 @@ class User extends CI_Model{
 		//Fecha de creacion	
 		$this->created=date('Y-m-d H:i:s');
 		$data["created"] = $this->created;
-
-
 		$this->db->insert("users",$data);
-		
+	}
+
+	public function read_all(){
+
+		$query = $this->db->query("SELECT id,firstname,lastname,email,contact_number,access_level,created FROM " . $this->table_name . " ORDER BY id DESC");
+
+		foreach ($query->result() as $row)
+		{
+			echo $row->id;
+			echo $row->firstname;
+			echo $row->lastname;
+			echo $row->email;
+			echo $row->contact_number;
+			echo $row->access_level;
+
+		}
 
 
 	}
+
+
 
 }
 

@@ -10,7 +10,8 @@ class Pages extends CI_Controller {
 			if ($this->session->has_userdata("access_level")) {
 				switch ($this->session->access_level) {
 					case 'admin':
-					echo "Eres Admin";
+					$this->session->set_flashdata('acces_success','Login success');
+					header("Location:".base_url("index.php/Admin/index"));
 					break;
 					case 'customer':
 					$this->session->set_flashdata('acces_success','Login success');

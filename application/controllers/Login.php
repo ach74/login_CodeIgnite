@@ -20,9 +20,13 @@ class Login extends CI_Controller {
 		if ($this->input->post()) {		
 			$this->user->set_email($this->input->post('email'));
 			if ($this->user->exist_email() && password_verify($this->input->post("password"), $this->user->get_password()) && $this->user->get_status()=="1"){
-				
-				$this->session->set_userdata('access_level','customer');
-				header("Location:".base_url());
+				if ($this->user->get_access_level()=="Admin") {
+					$this->session->set_userdata('access_level','admin');
+					header("Location:".base_url());
+				}else{
+					$this->session->set_userdata('access_level','customer');
+					header("Location:".base_url());
+				}
 			}else{
 				$this->session->set_flashdata('acces_error', 'Please Again');
 				header("Location:".base_url("index.php/Login/index"));

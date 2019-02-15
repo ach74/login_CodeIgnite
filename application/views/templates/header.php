@@ -8,7 +8,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default navbar-static-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">YourWebSite</a>
@@ -19,7 +19,7 @@
 
     <ul class="nav navbar-nav navbar-right">
       <li><a href="<?php echo base_url("index.php/Login/sign_Up");?>"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="<?php echo base_url("index.php/Login/sign_Up");?>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="<?php echo base_url();?>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
   </div>
 </nav>
